@@ -19,6 +19,7 @@
 __author__ = 'David K. Woods <dwoods@transana.com>'
 
 # import Python modules
+import codecs
 import difflib
 import os, sys, traceback
 import time
@@ -305,8 +306,8 @@ class SettingsPanel(wx.Panel):
         if line != '':
             transcript += line + '\n'
 
-        # Save the reference file
-        f = open(outputFilename, 'w')
+        # Save the reference file using UTF-8 encoding, required for many non-English languages
+        f = codecs.open(outputFilename, mode='w', encoding="utf8")
         f.write(transcript)
         f.flush()
         f.close()
@@ -476,8 +477,8 @@ class FWEval(wx.Frame):
 
         # Get the Reference File Name
         referenceFilename = self.Settings.GetReferenceFileName()
-        # Open the Reference File
-        f = open(referenceFilename, 'r')
+        # Open the Reference File using UTF-8 encoding, required for many non-English languages
+        f = codecs.open(referenceFilename, mode='r', encoding='utf8')
         # Load the Reference Transcript
         reference_transcript = f.read()
         # Close the Reference File
@@ -604,8 +605,8 @@ class FWEval(wx.Frame):
                         if line != '':
                             transcript += line + '\n'
 
-                        # Save the transcription file
-                        f = open(outputFilename, 'w')
+                        # Save the transcription file using UTF-8 encoding, required for many non-English languages
+                        f = codecs.open(outputFilename, mode='w', encoding='utf8')
                         f.write(transcript)
                         f.flush()
                         f.close()
@@ -848,8 +849,11 @@ class FWEval(wx.Frame):
         # ... and the output graph (PNG)
         graphOutputFile = os.path.join(self.Settings.filePathCtrl.GetPath(), fnroot + '_graph.png')
 
-        # Save the Transcript
-        self.txt.SaveFile(textOutputFile)
+        # Save the Transcript using UTF-8 encoding, required for many non-English languages
+        f = codecs.open(textOutputFile, mode='w', encoding="utf8")
+        f.write(self.txt.GetValue())
+        f.flush()
+        f.close()
 
         # Initialize a dictionary for the output data
         outputData = {}
@@ -894,8 +898,8 @@ class FWEval(wx.Frame):
         # Save the graph
         bmp.SaveFile(graphOutputFile, wx.BITMAP_TYPE_PNG)
 
-        # Open the HTML file
-        f = open(comparisonOutputFile, 'w')
+        # Open the HTML file using UTF-8 encoding, required for many non-English languages
+        f = codecs.open(comparisonOutputFile, mode='w', encoding='utf8')
         # Dump the HTML output to the file
         f.writelines(self.htmlData)
         # Flush the file buffer and close the file
