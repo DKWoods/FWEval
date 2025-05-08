@@ -103,8 +103,8 @@ And using Transana rather than FWEval, I've learned that when you explicitly req
 
 Please see the following blog posts for more detail of my findings:
 [Accuracy](https://www.transana.com/blog/2025/04/25/faster-whisper-in-transana-5-30-accuracy-1-of-3/)
-[Transcription Speed]https://www.transana.com/blog/2025/04/28/faster-whisper-in-transana-5-30-processing-speed-2-of-3/
-[Accuracy and Processing Speed]https://www.transana.com/blog/2025/05/01/faster-whisper-in-transana-5-30-accuracy-and-processing-speed-3-of-3/
+[Transcription Speed](https://www.transana.com/blog/2025/04/28/faster-whisper-in-transana-5-30-processing-speed-2-of-3/)
+[Accuracy and Processing Speed](https://www.transana.com/blog/2025/05/01/faster-whisper-in-transana-5-30-accuracy-and-processing-speed-3-of-3/)
 
 ## To Do list
 
