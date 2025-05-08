@@ -75,9 +75,11 @@ To use the FWEval code, after you've downloaded it, first run `python -m pip ins
 
 This program uses wxPython, which might not install correctly from requirements on Linux.  For me, using Ubuntu 22.04, the following commands installed wxPython and some necessary libraries:
 
-``pip install -v -U -f https://extras.wxpython.org/wxPython4/extras/linux/gtk3/ubuntu-22.04 wxPython
+```
+pip install -v -U -f https://extras.wxpython.org/wxPython4/extras/linux/gtk3/ubuntu-22.04 wxPython
 
-sudo apt-get install git curl libsdl2-mixer-2.0-0 libsdl2-image-2.0-0 libsdl2-2.0-0``
+sudo apt-get install git curl libsdl2-mixer-2.0-0 libsdl2-image-2.0-0 libsdl2-2.0-0
+```
 
 Your mileage may vary, but Google can help.  
 
