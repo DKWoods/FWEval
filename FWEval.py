@@ -31,7 +31,7 @@ import wx.html
 # import graphing module
 import ChartGraphic
 
-VERSION = '0.1.0'
+VERSION = '0.1.1'
 
 # Define i18n function
 _ = wx.GetTranslation
@@ -262,7 +262,8 @@ class SettingsPanel(wx.Panel):
         sentenceEnds = ['.', '?']
 
         # Set values for Faster Whisper parameters
-        compute_type = "float32"
+        compute_type = "auto"  # Options may include int8, int8_float32, int8_float16, int8_bfloat16, int16, float16, bfloat16, float32  (See below)
+
         language = LanguageLookup[self.language.GetStringSelection()]
         action = 'transcribe'
         temperature = 0.0
@@ -512,7 +513,16 @@ class FWEval(wx.Frame):
         # Convert the Settings tab language selection to the language abbreviation required by Faster Whisper
         language = LanguageLookup[self.Settings.language.GetStringSelection()]
         # Set other Faster Whisper settings
-        compute_type = "float32"
+        compute_type = "auto"  # "auto" "int8" "float32"  # Options may include int8, int8_float32, int8_float16, int8_bfloat16, int16, float16, bfloat16, float32
+        # auto
+        # int8            is fast for ALL models.
+        # int8_float32    is fast for ALL models.
+        # int8_float16    crashes on CUDA
+        # int8_bfloat16   crashes on CUDA
+        # int16           crashes on CUDA
+        # float16         crashes on CUDA
+        # bfloat16        crashes on CUDA
+        # float32         is very slow on CUDA for 4 Large models
         action = 'transcribe'  # 'translate'
         temperature = 0.0  # [0.0, 0.2, 0.4, 0.6, 0.8, 1.0,]
         compression_ratio = 2.4  # 2.4  20.0
